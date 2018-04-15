@@ -54,7 +54,7 @@
 #define EIC_BASE        0x40001800
 #define PAC1_BASE       0x41000000
 #define DSU_BASE        0x41002000
-#define NVMCTRL_BASE    0x41004000
+#define NVM_BASE        0x41004000
 #define PORTA_BASE      0x41004400
 #define PORTB_BASE      0x41004480
 #define PAC2_BASE       0x42000000
