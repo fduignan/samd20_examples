@@ -1,5 +1,5 @@
 /* User LED is on PA0 */
-/* This example uses SERCOM0 (UART mode) to send data from a host PC
+/* This example uses SERCOM0 (UART mode) to send data to a host PC
  * 
  */
 #include <stdint.h>
