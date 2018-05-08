@@ -24,11 +24,11 @@ void initUART()
     SERCOM0_CTRLA = BIT30 + BIT20 + BIT2 + BIT1; // LSB first, UART mode , internal clock, PAD1 = RX, PAD0 = TX, ENABLE    
     // 0x40000006 DORD,ENABLE,MODE001 (USART INTERNAL CLOCK), ENABLE
     while(SERCOM0_STATUS & BIT15); // wait for synchronization between clock domains to complete    
-    // The actual special function is selected by writing to the upper 4 bits of PAPMUX5 
-    // To select function C, write  '2' to these bits
-    PAPMUX4 = 0x22;    
-    PAPPINCFG8 |= BIT0; // enable special function multplexing on Pin 11                
-    PAPPINCFG9 |= BIT0; // enable special function multplexing on Pin 
+    // Will use pins 5 and 6 (PA4 and PA5) for TX, RX 
+    // To select function D, write  '3' to these bits
+    PAPMUX2 = 0x33;    
+    PAPPINCFG4 |= BIT0; // enable special function multplexing on Pin 5                
+    PAPPINCFG5 |= BIT0; // enable special function multplexing on Pin 6
     SERCOM0_INTFLAG = 0x0f; // clear (some) pending interrupts (if any)
     SERCOM0_INTENSET = BIT2 + BIT1; // enable TXC, RXC interrupts
     NVIC_ISER = BIT7; // allow SERCOM0 interrupts pass through the NVIC

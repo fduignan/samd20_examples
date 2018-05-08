@@ -415,6 +415,9 @@
 #define TC0_COUNT           REGISTER_32(TC0_BASE + 0x0010)
 #define TC0_CC0             REGISTER_32(TC0_BASE + 0x0018)
 #define TC0_CC1             REGISTER_32(TC0_BASE + 0x001c)
+#define TC0_COUNT_16        REGISTER_16(TC0_BASE + 0x0010)
+#define TC0_CC0_16          REGISTER_16(TC0_BASE + 0x0018)
+#define TC0_CC1_16          REGISTER_16(TC0_BASE + 0x001A)
 
 // TC1  only 32 bit mode is defined here.
 #define TC1_CTRLA           REGISTER_16(TC1_BASE + 0x0000)
