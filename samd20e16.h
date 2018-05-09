@@ -551,7 +551,7 @@
 #define ADC_WINUT           REGISTER_16(ADC_BASE + 0x0020)
 #define ADC_GAINCORR        REGISTER_16(ADC_BASE + 0x0024)
 #define ADC_OFFSETCORR      REGISTER_16(ADC_BASE + 0x0026)
-#define ADC_CALIB           REGISTER_8(ADC_BASE + 0x0028)
+#define ADC_CALIB           REGISTER_16(ADC_BASE + 0x0028)
 
 // AC  : analogue comparators
 #define AC_CTRLA            REGISTER_8(AC_BASE + 0x0000)
@@ -578,6 +578,23 @@
 #define DAC_STATUS          REGISTER_8(DAC_BASE + 0x0007)
 #define DAC_DATA            REGISTER_16(DAC_BASE + 0x0008)
 #define DAC_DATABUF         REGISTER_16(DAC_BASE + 0x000c)
+
+
+
+// NVM SOFTWARE CALIBRATION AREA
+#pragma PACK
+typedef struct {
+    uint64_t Reserved1 : 27;
+    uint64_t ADC_LINEARITY : 8;
+    uint64_t ADC_BIAS_CAL : 3;
+    uint64_t OSC32K_CAL : 7;
+    uint64_t Reserved2 : 13;
+    uint64_t DFLL48M_COARSE_CAL : 8;
+    uint64_t DFLL48M_FINE_CAL : 10;
+    uint64_t Reserved3: 54;
+    
+} NVM_CALIBRATION_AREA_T;
+#define NVM_CALIBRATION_AREA (*(NVM_CALIBRATION_AREA_T *)0x806020)
 
 // PTC       THIS PERIPHERAL IS NOT DESCRIBED IN THE DATASHEET - BINARY BLOB NEEDED :(
 
@@ -616,3 +633,4 @@
 #define CCR			REGISTER_32(SCB_BASE + 0x14)
 #define SHPR2		REGISTER_32(SCB_BASE + 0x1c)
 #define SHPR3		REGISTER_32(SCB_BASE + 0x20)
+
